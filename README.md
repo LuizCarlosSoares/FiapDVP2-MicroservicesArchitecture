@@ -25,5 +25,5 @@ Navegar até o diretório onde a aplicação foi clonada e executar:
 
 Após subir a aplicação acessar:
 
-http://localhost:8000
+http://localhost:80000
 
