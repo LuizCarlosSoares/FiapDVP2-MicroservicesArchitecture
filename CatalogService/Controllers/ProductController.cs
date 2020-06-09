@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Products;
 using Services;
@@ -30,6 +31,47 @@ namespace bookCatalog.Controllers {
         [HttpGet("books")]
         public IEnumerable<Book> Get () {
             return service.Get();
+        }
+
+        [HttpGet("book/{id}")]
+        public Book Get (string id) {
+            return service.Get(id);
+        }
+
+        [HttpPut("book")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Book> Create([FromBody] Book book ){
+
+            return Ok(service.Create(book));
+        }
+
+
+        [HttpPost("book")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        
+        public ActionResult Update([FromBody] Book book ) {
+
+            if(string.IsNullOrEmpty(book.Id)){
+                    return BadRequest();
+            }
+
+            service.Update(book.Id,book);
+            return Ok("Updated");
+        }
+
+        [HttpDelete("book")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        
+        public ActionResult Delete([FromBody] Book book ) {
+
+            if(string.IsNullOrEmpty(book.Id)){
+                    return BadRequest();
+            }
+            service.Remove(book.Id);
+            return Ok("Deleted");
         }
     }
 }

@@ -28,3 +28,6 @@ domain/obj
 ApiGateway/bin
 ApiGateway/obj
 
+CatalogService/bin
+CatalogService/obj
+

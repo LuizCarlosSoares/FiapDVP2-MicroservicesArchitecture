@@ -8,6 +8,11 @@ name: microservices
 services: 
 - name: catalog-api
   project: CatalogService/CatalogService.csproj
+  replicas: 2
+  bindings:
+    - port: 5013
 - name: api-gateway
   project: ApiGateway/ApiGateway.csproj
+  bindings:
+    - port: 7000
 
