@@ -43,7 +43,7 @@ namespace bookCatalog {
                 app.UseDeveloperExceptionPage ();
             }
 
-            //app.UseHealthChecks ("/check");
+            app.UseHealthChecks ("/check");
 
             app.UseHttpsRedirection ();
 
