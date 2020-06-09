@@ -25,7 +25,6 @@ book-shipping-service/obj
 domain/bin
 domain/obj
 
-book-front-end/bin
-book-front-end/obj
-book-front-end/wwwroot
+ApiGateway/bin
+ApiGateway/obj
 
