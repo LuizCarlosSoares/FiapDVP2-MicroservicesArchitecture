@@ -1,8 +1,5 @@
-﻿using System;
+using System;
 
-namespace domain
-{
-    public class Class1
-    {
-    }
+namespace domain {
+    public class Class1 { }
 }

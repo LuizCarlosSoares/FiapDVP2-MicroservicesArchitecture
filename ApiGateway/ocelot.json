@@ -2,7 +2,7 @@
     "Routes": [
 
         {
-            "DownstreamPathTemplate": "/api/products",
+            "DownstreamPathTemplate": "/api/products/{catchAll}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                     {
@@ -10,7 +10,7 @@
                         "Port": 5013
                     }
                 ],
-            "UpstreamPathTemplate": "/catalog-api/products"           
+            "UpstreamPathTemplate": "/catalog-api/products/{catchAll}"           
         }
 
     ],
