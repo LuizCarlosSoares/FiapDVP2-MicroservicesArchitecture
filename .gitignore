@@ -6,3 +6,26 @@ backend/obj
 
 frontend/bin
 frontend/obj
+
+book-account-service/bin
+book-account-service/obj
+
+book-api-gateway-base/bin
+book-api-gateway-base/obj
+
+book-billing-service/bin
+book-billing-service/obj
+
+book-catalog-service/bin
+book-catalog-service/obj
+
+book-shipping-service/bin
+book-shipping-service/obj
+
+domain/bin
+domain/obj
+
+book-front-end/bin
+book-front-end/obj
+book-front-end/wwwroot
+
