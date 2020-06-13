@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 using Products;
 using Services;
 using DatabaseSettings;
+using Domain.Services;
+using Domain.Settings;
+
 namespace CatalogService
 {
     public class Startup
@@ -30,6 +33,10 @@ namespace CatalogService
         {
             services.Configure<DBSettings> (
                 Configuration.GetSection (nameof (DBSettings)));
+
+            services.Configure<AuthSettings> (
+                Configuration.GetSection (nameof (AuthSettings)));
+
 
             services.AddTransient<IProductService<Book>,ProductServiceBase<Book>>();
 

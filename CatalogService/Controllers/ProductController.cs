@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Products;
-using Services;
+using Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 
-namespace bookCatalog.Controllers {
+namespace bookCatalog.Controllers
+{
+    [Authorize]
     [ApiController]
     [Route ("/api/products")]
     public class ProductController : ControllerBase {

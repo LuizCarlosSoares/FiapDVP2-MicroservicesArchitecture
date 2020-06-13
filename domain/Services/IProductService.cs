@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Products;
 
-namespace Services {
+namespace Domain.Services {
 
     public interface IProductService<T> {
 

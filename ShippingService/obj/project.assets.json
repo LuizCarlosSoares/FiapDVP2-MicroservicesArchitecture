@@ -1021,11 +1021,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/luizcarlos/source/repo/ShippingService/ShippingService.csproj",
+      "projectUniqueName": "/home/luizcarlos/source/repo/FiapDVP2-MicroservicesArchitecture/ShippingService/ShippingService.csproj",
       "projectName": "ShippingService",
-      "projectPath": "/home/luizcarlos/source/repo/ShippingService/ShippingService.csproj",
+      "projectPath": "/home/luizcarlos/source/repo/FiapDVP2-MicroservicesArchitecture/ShippingService/ShippingService.csproj",
       "packagesPath": "/home/luizcarlos/.nuget/packages/",
-      "outputPath": "/home/luizcarlos/source/repo/ShippingService/obj/",
+      "outputPath": "/home/luizcarlos/source/repo/FiapDVP2-MicroservicesArchitecture/ShippingService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/luizcarlos/.nuget/NuGet/NuGet.Config"

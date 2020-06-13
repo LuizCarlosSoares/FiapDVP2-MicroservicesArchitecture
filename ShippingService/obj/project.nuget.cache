@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RgfkU/TiPBwfVU1yyZddFL4nbHu6JzDD1tR+499nJpE+if1O8FJVG/bg6+IQNXDXntscp8HDc9C4iNRejz6FKA==",
+  "dgSpecHash": "IAIMxmMllUJZ5Ep43MM5Q8VNiM45CETdgsnQMsOMLGwGwkWol96VMElxy/EWOFLAYwaNdCW5T1DlzacF+XqcjQ==",
   "success": true,
-  "projectFilePath": "/home/luizcarlos/source/repo/ShippingService/ShippingService.csproj",
+  "projectFilePath": "/home/luizcarlos/source/repo/FiapDVP2-MicroservicesArchitecture/ShippingService/ShippingService.csproj",
   "expectedPackageFiles": [
     "/home/luizcarlos/.nuget/packages/microsoft.extensions.configuration/3.1.5/microsoft.extensions.configuration.3.1.5.nupkg.sha512",
     "/home/luizcarlos/.nuget/packages/microsoft.extensions.configuration.abstractions/3.1.5/microsoft.extensions.configuration.abstractions.3.1.5.nupkg.sha512",

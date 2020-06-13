@@ -6,12 +6,18 @@
 #
 name: microservices
 services: 
+- name: auth-service
+  project: AuthService/AuthService.csproj
+  replicas: 2 
+  bindings:
+    - port: 5001
 - name: catalog-api
   project: CatalogService/CatalogService.csproj
   replicas: 2
   bindings:
     - port: 5013
 - name: api-gateway
+  replicas: 2
   project: ApiGateway/ApiGateway.csproj
   bindings:
     - port: 7000
