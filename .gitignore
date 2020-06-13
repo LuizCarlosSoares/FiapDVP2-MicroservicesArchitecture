@@ -1,14 +1,6 @@
 .vscode
 
-book-account-service/bin
-book-account-service/obj
 
-
-book-billing-service/bin
-book-billing-service/obj
-
-book-shipping-service/bin
-book-shipping-service/obj
 
 domain/bin
 domain/obj
@@ -18,3 +10,23 @@ ApiGateway/obj
 
 CatalogService/bin
 CatalogService/obj
+
+AuthService/bin
+AuthService/obj
+
+CartService/bin
+CartService/obj
+
+PaymentService/bin
+PaymentService/obj
+
+OrderService/bin
+OrderService/obj
+
+ShippmentService/bin
+ShippmentService/obj
+
+CartService/obj
+CartService/bin
+
+jars
