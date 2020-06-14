@@ -33,6 +33,7 @@ namespace AuthService
                     // scopes that client has access to
                     AllowedScopes = { "Catalog-Api" },
                     RequireConsent = false,
+                        
                 }
             
                 

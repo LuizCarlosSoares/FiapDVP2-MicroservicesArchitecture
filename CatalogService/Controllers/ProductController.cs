@@ -33,12 +33,12 @@ namespace bookCatalog.Controllers
             return service.Get();
         }
 
-        [HttpGet("book/{id}")]
+        [HttpGet("books/{id}")]
         public Book Get (string id) {
             return service.Get(id);
         }
 
-        [HttpPut("book")]
+        [HttpPut("books/create")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Book> Create([FromBody] Book book ){
@@ -47,7 +47,7 @@ namespace bookCatalog.Controllers
         }
 
 
-        [HttpPost("book")]
+        [HttpPost("books/update")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         
@@ -61,7 +61,7 @@ namespace bookCatalog.Controllers
             return Ok("Updated");
         }
 
-        [HttpDelete("book")]
+        [HttpDelete("books/delete")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         
