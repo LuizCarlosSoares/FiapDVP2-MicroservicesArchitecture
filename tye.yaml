@@ -16,14 +16,13 @@ services:
   replicas: 1
   bindings:
     - port: 5013
+- name: cart-api
+  project: CatalogService/CatalogService.csproj
+  replicas: 1
+  bindings:
+    - port: 5014
 - name: api-gateway
   replicas: 1
   project: ApiGateway/ApiGateway.csproj
   bindings:
     - port: 7000
-- name: redis
-  dockerImage: redis
-  bindings:
-   - port: 6379
-     connectionString: ${host}:${port} 
-

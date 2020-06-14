@@ -29,6 +29,15 @@ namespace CartService
         {
             services.AddControllers();
 
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    options.Audience = "Cart-Api";
+                });
+
             services.AddDbContext<CartDbContext>(options=>{
                 options.UseInMemoryDatabase(databaseName: "CartDb");   
             });

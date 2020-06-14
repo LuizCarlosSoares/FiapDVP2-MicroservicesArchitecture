@@ -31,7 +31,7 @@ namespace AuthService
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     // scopes that client has access to
-                    AllowedScopes = { "Catalog-Api" },
+                    AllowedScopes = { "Catalog-Api", "Cart-Api" },
                     RequireConsent = false,
                         
                 }
