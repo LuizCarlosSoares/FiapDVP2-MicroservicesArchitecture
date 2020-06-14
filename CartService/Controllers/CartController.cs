@@ -33,6 +33,20 @@ namespace CartService.Controllers
                    return StatusCode(501); 
         }
 
+        [HttpPost("item/delete")]
+        public IActionResult RemveFromCart(OrderItem item){
+            
+                if(string.IsNullOrEmpty(item.Id)){
+                    item.Id = System.Guid.NewGuid().ToString();
+                }
+                context.OrderItems.Remove(item);
+                
+                if(context.SaveChanges() >0)
+                    return Ok($"Cart Id: {item.Id}");
+                else 
+                   return StatusCode(501); 
+        }
+
         [HttpGet()]
         public IActionResult GetCart(string cartId){
 
