@@ -40,14 +40,14 @@ namespace CartService.Controllers
                     item.Id = System.Guid.NewGuid().ToString();
                 }
                 context.OrderItems.Remove(item);
-                
+
                 if(context.SaveChanges() >0)
                     return Ok($"Cart Id: {item.Id}");
                 else 
                    return StatusCode(501); 
         }
 
-        [HttpGet()]
+        [HttpGet("{id}")]
         public IActionResult GetCart(string cartId){
 
             var items =  context.OrderItems.Where(it=> it.Id == cartId);

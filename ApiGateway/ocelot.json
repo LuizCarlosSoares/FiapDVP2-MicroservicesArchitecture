@@ -48,7 +48,43 @@
                 ],
             "UpstreamPathTemplate": "/catalog-api/products/books/delete/" , 
             "UpstreamHttpMethod": [ "Delete" ]            
-        }
+        },
+        {
+            "DownstreamPathTemplate": "/api/cart/item/add/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5014
+                    }
+                ],
+            "UpstreamPathTemplate": "/cart-api/item/add/" , 
+            "UpstreamHttpMethod": [ "Post" ]            
+        },
+        {
+            "DownstreamPathTemplate": "/api/cart/item/delete/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5014
+                    }
+                ],
+            "UpstreamPathTemplate": "/cart-api/item/delete/" , 
+            "UpstreamHttpMethod": [ "Post" ]            
+        },
+        {
+            "DownstreamPathTemplate": "/api/cart/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5014
+                    }
+                ],
+            "UpstreamPathTemplate": "/cart-api/{id}" , 
+            "UpstreamHttpMethod": [ "Get" ]            
+        },
 
 
 
