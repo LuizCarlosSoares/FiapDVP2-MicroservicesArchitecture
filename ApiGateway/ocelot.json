@@ -84,10 +84,7 @@
                 ],
             "UpstreamPathTemplate": "/cart-api/{id}" , 
             "UpstreamHttpMethod": [ "Get" ]            
-        },
-
-
-
+        }
     ],
     "GlobalConfiguration": {
         "BaseUrl": "https://localhost:7000"
