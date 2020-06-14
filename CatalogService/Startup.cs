@@ -16,26 +16,41 @@ using Services;
 using DatabaseSettings;
 using Domain.Services;
 using Domain.Settings;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CatalogService
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        private readonly IConfiguration configuration; 
+        public Startup(IConfiguration _configuration)
         {
-            Configuration = configuration;
+            configuration = _configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<DBSettings> (
-                Configuration.GetSection (nameof (DBSettings)));
+                configuration.GetSection (nameof (DBSettings)));
 
             services.Configure<AuthSettings> (
-                Configuration.GetSection (nameof (AuthSettings)));
+                configuration.GetSection (nameof (AuthSettings)));
+           
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    options.Audience = "Catalog-Api";
+                });
+
 
 
             services.AddTransient<IProductService<Book>,ProductServiceBase<Book>>();
@@ -61,7 +76,9 @@ namespace CatalogService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

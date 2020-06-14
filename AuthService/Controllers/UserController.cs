@@ -15,6 +15,9 @@ namespace Authentication.Controllers
     using Domain.Entities;
     using Authentication.Helpers;
     using Authentication.Models;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using IdentityModel.Client;
 
     namespace WebApi.Controllers
     {
@@ -39,35 +42,39 @@ namespace Authentication.Controllers
 
             [AllowAnonymous]
             [HttpPost("authenticate")]
-            public IActionResult Authenticate([FromBody] UserAuthenticateModel model)
+            public async Task<IActionResult> Authenticate([FromBody] UserAuthenticateModel model)
             {
                 var user = _userService.Authenticate(model.Username, model.Password);
 
-                if (user == null)
-                    return BadRequest(new { message = "Username or password is incorrect" });
+                if(user==null) 
+                    return NotFound(user.Username);
 
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_authSettings.Secret);
-                var tokenDescriptor = new SecurityTokenDescriptor
+                var client = new HttpClient();
+
+                var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5001");
+                if (disco.IsError)
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                    }),
-                    Expires = DateTime.UtcNow.AddDays(7),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-                };
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-                var tokenString = tokenHandler.WriteToken(token);
+                
+                    return Task.FromResult<IActionResult>(BadRequest(disco.Exception.Message)).Result;
+                }
 
-                // return basic user info and authentication token
+                // request token
+                var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+                    ClientId = "e-commerce",
+                    ClientSecret = "secret",
+
+                    Scope = "Catalog-Api"
+                });
+                
                 return Ok(new
                 {
                     Id = user.Id,
                     Username = user.Username,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Token = tokenString
+                    Token = tokenResponse.AccessToken
                 });
             }
 

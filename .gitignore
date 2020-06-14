@@ -23,8 +23,8 @@ PaymentService/obj
 OrderService/bin
 OrderService/obj
 
-ShippmentService/bin
-ShippmentService/obj
+ShippingService/bin
+ShippingService/obj
 
 CartService/obj
 CartService/bin
