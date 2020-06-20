@@ -11,6 +11,7 @@ namespace CatalogService
 {
     public class Program
     {
+        public const string EndPointName = "FiapDVP2.CatalogSevice";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

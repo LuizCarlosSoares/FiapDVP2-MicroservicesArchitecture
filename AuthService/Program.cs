@@ -11,6 +11,8 @@ namespace AuthService
 {
     public class Program
     {
+
+        public const string EndPointName = "FiapDVP2.AuthService";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

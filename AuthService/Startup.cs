@@ -1,19 +1,19 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using System.Threading.Tasks;
 using Authentication.Helpers.WebApi.Helpers;
 using Authentication.Services;
 using AutoMapper;
 using Domain.Services;
 using Domain.Settings;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Trace.Configuration;
+using NServiceBus.Extensions.Diagnostics.OpenTelemetry;
 
 namespace AuthService
 {
@@ -46,6 +46,24 @@ namespace AuthService
             services.AddCors();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddOpenTelemetry(builder => builder
+                .UseZipkin(o =>
+                {
+                    o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
+                    o.ServiceName = Program.EndPointName;
+                })
+                .UseJaeger(c =>
+                {
+                    c.AgentHost = "localhost";
+                    c.AgentPort = 6831;
+                    c.ServiceName = Program.EndPointName;
+                })
+                .AddNServiceBusAdapter()
+                .AddRequestAdapter()
+                .AddDependencyAdapter(configureSqlAdapterOptions: 
+                    opt => opt.CaptureTextCommandContent = true));
+
 
             // configure strongly typed settings objects
             var appSettingsSection = _configuration.GetSection("AuthSettings");

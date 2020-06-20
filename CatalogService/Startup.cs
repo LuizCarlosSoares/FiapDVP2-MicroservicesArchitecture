@@ -1,24 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using OpenTelemetry.Trace.Configuration;
+using NServiceBus.Extensions.Diagnostics.OpenTelemetry;
 using Products;
 using Services;
 using DatabaseSettings;
 using Domain.Services;
 using Domain.Settings;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
 namespace CatalogService
 {
@@ -50,6 +43,23 @@ namespace CatalogService
 
                     options.Audience = "Catalog-Api";
                 });
+            
+            services.AddOpenTelemetry(builder => builder
+                .UseZipkin(o =>
+                {
+                    o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
+                    o.ServiceName = Program.EndPointName;
+                })
+                .UseJaeger(c =>
+                {
+                    c.AgentHost = "localhost";
+                    c.AgentPort = 6831;
+                    c.ServiceName = Program.EndPointName;
+                })
+                .AddNServiceBusAdapter()
+                .AddRequestAdapter()
+                .AddDependencyAdapter(configureSqlAdapterOptions: 
+                    opt => opt.CaptureTextCommandContent = true));
 
 
 
@@ -89,6 +99,8 @@ namespace CatalogService
             app.UseSwaggerUI (c => {
                 c.SwaggerEndpoint ("/swagger/v1/swagger.json", "Book Catalog Api");
             });
+
+            
         }
     }
 }
