@@ -66,9 +66,9 @@ Para acessar o open telemetry:
 
 ## O que foi implementado:
 
-   * Oauth usando o [IdentityServer] do .NET (https://github.com/IdentityServer/IdentityServer4); 
-   * API Gateway usando [Ocelot]: (https://github.com/ThreeMammals/Ocelot);
-   * Service Discovery e resiliência [dotnet tye]: (https://github.com/dotnet/tye);
+   * Oauth usando o [IdentityServer4](https://github.com/IdentityServer/IdentityServer4) do .NET ; 
+   * API Gateway usando [Ocelot](https://github.com/ThreeMammals/Ocelot);
+   * Service Discovery e resiliência [dotnet tye](https://github.com/dotnet/tye);
 
 ## Autores
 
