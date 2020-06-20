@@ -1,8 +1,7 @@
 <h1 align="center">Welcome to FiapDVP2-Microservices-Architecture 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <img src="https://img.shields.io/badge/npm-%3E%3D5.5.0-blue.svg" />
-  <img src="https://img.shields.io/badge/node-%3E%3D9.3.0-blue.svg" />
+
   
 </p>
 
@@ -71,10 +70,11 @@ Para acessar o open telemetry:
    * API Gateway usando [Ocelot]: (https://github.com/ThreeMammals/Ocelot);
    * Service Discovery e resiliência [dotnet tye]: (https://github.com/dotnet/tye);
 
-## Authores
+## Autores
 
-👤 **Luiz Carlos Soares (RM-336362)**
-👤 **Vinicius Briotto (RM-336362)**
-👤 **Renan (RM-336362)**
-👤 **Edgar (RM-336362)**
+👤 **Edgar            (RM-336222)**
+👤 **Luiz Carlos      (RM-336362)**
+👤 **Renan            (RM-336489)**
+👤 **Vinicius         (RM-335224)**
+
 
